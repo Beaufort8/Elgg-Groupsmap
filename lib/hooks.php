@@ -21,8 +21,6 @@ function add_groups_map_tab($hook, $type, $menu, $params) {
 			// compatibility with group tools filter menu
 			$contextedit = false;
 			foreach($menu as $item){
-				echo $item->getName(),"<br>";
-	
 				if(strpos($item->getName(),'tools')!==false){
 					$contextedit = true;
 					break;
