@@ -118,7 +118,9 @@ if ($entities) {
             $object_x['info_window'] = $object_x['icon'].' <b><a href="'.$object_x['url'].'">'.$object_x['title'].'</a></b>';
             $object_x['info_window'] .= ($object_x['location']?'<br/><i>'.$object_x['location'].'</i>':'');
             $object_x['info_window'] .= ($object_x['other_info']?'<br/>'.$object_x['other_info']:'');
-            $object_x['info_window'] .= ($object_x['description']?'<br/>'.$object_x['description']:'');            
+            $object_x['info_window'] .= ($object_x['description']?'<br/>--'.$object_x['description'].'--':'');            
+
+            $object_x['info_window'] = elgg_view('groupsmap/info_window',array('object_x'=>$object_x,'entity'=>$e));
             array_push($map_objects, $object_x);        
         }
     }   
