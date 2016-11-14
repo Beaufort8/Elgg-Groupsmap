@@ -106,6 +106,7 @@ if ($entities) {
             $object_x = array();
             $object_x['guid'] = $e->getGUID();
             $object_x['title'] = amap_ma_remove_shits($e->getVolatileData('m_title'));;
+            $object_x['url'] = $e->getURL();
             $object_x['description'] = amap_ma_get_entity_description($e->getVolatileData('m_description'));
             $object_x['location'] = elgg_echo('amap_maps_api:location', array(amap_ma_remove_shits($e->getVolatileData('m_location'))));	
             $object_x['lat'] = $e->getLatitude();
@@ -113,8 +114,9 @@ if ($entities) {
             $object_x['icon'] = $e->getVolatileData('m_icon');
             $object_x['other_info'] = $e->getVolatileData('m_other_info');
             $object_x['map_icon'] = $e->getVolatileData('m_map_icon');
-            $object_x['info_window'] = $object_x['icon'].' '.$object_x['title'];
-            $object_x['info_window'] .= ($object_x['location']?'<br/>'.$object_x['location']:'');
+            
+            $object_x['info_window'] = $object_x['icon'].' <b><a href="'.$object_x['url'].'">'.$object_x['title'].'</a></b>';
+            $object_x['info_window'] .= ($object_x['location']?'<br/><i>'.$object_x['location'].'</i>':'');
             $object_x['info_window'] .= ($object_x['other_info']?'<br/>'.$object_x['other_info']:'');
             $object_x['info_window'] .= ($object_x['description']?'<br/>'.$object_x['description']:'');            
             array_push($map_objects, $object_x);        
